@@ -6,7 +6,7 @@ const app = express();
 const cors = require("cors");
 app.use(cors());
 
-require('dotenv').config({path: 'server/.env'});
+require('dotenv').config();
 
 const PORT = 8080;
 const products = require("./routes/products");
