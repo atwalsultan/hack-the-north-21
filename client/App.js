@@ -5,14 +5,21 @@ export default function App() {
   const myFunc = async () => {
     const url = `http://10.0.2.2:8080/api/products`;
     const response = await fetch(url);   // fetch page
-    const responseJson = await response.json();  // get response text
+    const responseJsonArray = await response.json();  // get response text
 
-    console.log(responseJson);
+    console.log(`\n\nThe products are as follows: \n\n`);
+
+    responseJsonArray.map(product => {
+      console.log(`Name: ${product.brand} ${product.model}`);
+      console.log(`Price: ${product.price} CAD`);
+      console.log(`Vendor: ${product.vendor}`);
+      console.log(`\n`);
+    });
   }
 
   return (
     <View style={styles.container}>
-      <Button title="Click" onPress={myFunc} />
+      <Button title="Fetch Products" onPress={myFunc} />
     </View>
   );
 }
